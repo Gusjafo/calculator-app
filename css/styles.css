@@ -3,18 +3,13 @@ body {
     box-sizing: border-box;
     background-color: #c5e4e7;
     font-family: 'Space Mono', monospace;
-    font-weight: 700;
-    font-size: 24;
-    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
-    
 }
 
 .form-control {
     border-style: hidden;
     background-color:#f4fafa;
 }
-
-.validado {
-    font-size: large;
-    display: block;
+.textSize {
+    font-size: 3rem;
+    color: #26c0ab;
 }
