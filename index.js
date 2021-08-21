@@ -19,14 +19,24 @@
 })()
 
 
+let inputBill = "0.00";
+let inputBillPut = null;
+document.querySelector("#inputBillText").value = inputBill;
 
-
-function myFunction() {
-  let inputBill = document.querySelector("#inputBillText").value
-let resetBtn = document.getElementById("resetButon");
-let outPerPerson = document.getElementById("tipPerPerson");
-let outTotal = document.getElementById("tipTotal");
-outPerPerson.innerHTML = inputBill;
-outTotal.innerHTML = inputBill;
+function putBillValue() {
+    inputBillPut = document.querySelector("#inputBillText").value;
+    document.querySelector("#inputBillText").value = inputBillPut;    
 }
+
+function resetBillValue(){
+  document.querySelector("#inputBillText").value = inputBillPut;
+}
+
+
+
+// let resetBtn = document.getElementById("resetButon");
+// let outPerPerson = document.getElementById("tipPerPerson");
+// let outTotal = document.getElementById("tipTotal");
+// outPerPerson.innerHTML = inputBill;
+// outTotal.innerHTML = inputBill;
 
