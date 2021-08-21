@@ -10,6 +10,17 @@ body {
     background-color:#f4fafa;
 }
 .textSize {
-    font-size: 3rem;
     color: #26c0ab;
+}
+
+.botones div button {
+    background-color: #00494d;
+    color: #ffffff;
+}
+
+.botones div:nth-child(6) input {
+    background-color: #f4fafa;
+    color: #00494d;    
+    font-weight: 700;
+    text-align: center!important;
 }

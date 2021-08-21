@@ -18,3 +18,15 @@
     })
 })()
 
+
+
+
+function myFunction() {
+  let inputBill = document.querySelector("#inputBillText").value
+let resetBtn = document.getElementById("resetButon");
+let outPerPerson = document.getElementById("tipPerPerson");
+let outTotal = document.getElementById("tipTotal");
+outPerPerson.innerHTML = inputBill;
+outTotal.innerHTML = inputBill;
+}
+
