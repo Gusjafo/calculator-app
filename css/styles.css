@@ -22,5 +22,21 @@ body {
     background-color: #f4fafa;
     color: #00494d;    
     font-weight: 700;
-    text-align: center!important;
+    text-align: center!important;    
+}
+
+#logoDolar {
+    padding-left: 20px;
+    position: relative;
+    bottom: 36px;
+}
+
+#logoPerson {
+    padding-left: 20px;
+    position: relative;
+    bottom: 36px;
+}
+
+#inputBillText, #inputPeopleText {
+    color: #00494d;
 }

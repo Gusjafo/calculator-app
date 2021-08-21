@@ -29,10 +29,11 @@
       <div class="row row-cols-1 mx-4 row-cols-md-2 align-items-center g-0">
         <div class="col" id="columnOne" style="background-color: #ffffff;">
           <div class="col m-4">
-            <label for="inputBillText" class="form-label">Bill</label>
-            <input type="text" class="form-control text-end" value="0.00" id="inputBillText" oninput="myFunction()">
+            <label for="inputBillText" class="form-label">Bill</label>            
+            <input type="text" class="form-control text-end fs-4" value="0.00" id="inputBillText" oninput="myFunction()">
+            <img src="images\icon-dollar.svg" role="img" alt="dollar_img" id="logoDolar">
           </div>
-          <div class="col mx-4">Select Tip %</div>
+          <div class="col mx-4 fs-6">Select Tip %</div>
           <div class="row row-cols-2 row-cols-md-3 pt-2 pb-4 mx-3 g-3 g-lg-3 botones">
             <div class="col mt-3"><button type="button" class="btn w-100">5%</button></div>
             <div class="col mt-3"><button type="button" class="btn w-100">10%</button></div>
@@ -45,7 +46,7 @@
             <form action="" class="needs-validation" novalidate>
               <div class="row justify-content-between">
                 <div class="col-6">
-                  <label for="validationCustom" class="form-label">Number of People</label>
+                  <label for="validationCustom" class="form-label fs-6">Number of People</label>
                 </div>
                 <div class="col-6">
                   <div class="invalid-feedback" id="invalid-feedback">
@@ -53,22 +54,23 @@
                   </div>
                 </div>
               </div>
-              <input type="text" class="form-control text-end" id="inputPeopleText" required>
+              <input type="text" class="form-control text-end fs-4" value="-" id="inputPeopleText" required>
+              <img src="images\icon-person.svg" role="img" alt="person_img" id="logoPerson">
             </form>
           </div>
         </div>
 
         <div class="col p-2" id="columnTwo" style="background-color: #ffffff;">
           <div class="col my-3 pt-4" style="background-color: #00494d; border-radius: 20px;">
-            <div class="row row-cols-2 align-items-center p-4">
-              <div class="col h-100" style="color: white;"><b>Tip Amount</b><br> / person</div>
-              <div class="col h-100 text-end textSize"><h1 id="tipPerPerson">$0.00</h1></div>
-              <div class="col h-100" style="color: white;"> <b>Total</b><br> / person</div>
-              <div class="col h-100 text-end textSize"><h1 id="tipTotal">$0.00</h1></div>
+            <div class="row row-cols-2 align-items-center p-5">
+              <div class="col h-100 fs-6" style="color: white;"><b>Tip Amount</b><br> / person</div>
+              <div class="col h-100 text-end textSize fs-1" id="tipPerPerson">$0.00</div>
+              <div class="col h-100 fs-6" style="color: white;"><b>Total</b><br> / person</div>
+              <div class="col h-100 text-end textSize fs-1" id="tipTotal">$0.00</div>
             </div>
-            <div><br><br></div>
+            <div><br><br><br></div>
             <div class="col h-100 p-4">
-              <button type="button" id="resetButon" class="btn w-100" style="background-color: #26c0ab;">Reset</button>
+              <button type="button" id="resetButon" class="btn w-100 fs-4" style="background-color: #26c0ab;">Reset</button>
             </div>
           </div>
         </div>
@@ -77,7 +79,7 @@
 
     <div class="attribution text-center mt-5">
       Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-      Coded by <a href="#">Your Name Here</a>.
+      Coded by <a href="https://github.com/Gusjafo" target="_blank">GJF</a>.
       <div style="background_color: #26c0ab"></div>
       <div style="background_color: #00494d"></div>
       <div style="background_color: #5e7a7d"></div>
