@@ -29,18 +29,18 @@
         <div class="col" id="columnOne" style="background-color: #ffffff;">
           <div class="col m-4">
             <label for="inputBillText" class="form-label">Bill</label>
-            <input type="tel" class="shadow-none form-control text-end fs-4" value="" id="inputBillText"
+            <input type="tel" class="shadow-none form-control text-end fs-4" value="0.00" id="inputBillText"
               onclick="resetBillValue()" onkeypress="return onlyNumberKeyDot(event)" />
             <img src="images\icon-dollar.svg" role="img" alt="dollar_img" id="logoDolar">
           </div>
           <div class="col mx-4 fs-6">Select Tip %</div>
           <div class="row row-cols-2 row-cols-md-3 pt-2 pb-4 mx-3 g-3 g-lg-3 botones">
-            <div class="col mt-3"><button type="button" class="btn w-100">5%</button></div>
-            <div class="col mt-3"><button type="button" class="btn w-100">10%</button></div>
-            <div class="col mt-3"><button type="button" class="btn w-100">15%</button></div>
-            <div class="col mt-3"><button type="button" class="btn w-100">25%</button></div>
-            <div class="col mt-3"><button type="button" class="btn w-100">50%</button></div>
-            <div class="col mt-3"><input type="text" value="Custom" class="form-control text-end" id="validationCustom"
+            <div class="col mt-3"><button type="button" id="5" class="btn btnPercent w-100">5%</button></div>
+            <div class="col mt-3"><button type="button" id="10" class="btn btnPercent w-100">10%</button></div>
+            <div class="col mt-3"><button type="button" id="15" class="btn btnPercent w-100">15%</button></div>
+            <div class="col mt-3"><button type="button" id="25" class="btn btnPercent w-100">25%</button></div>
+            <div class="col mt-3"><button type="button" id="50" class="btn btnPercent w-100">50%</button></div>
+            <div class="col mt-3"><input type="text" value="Custom" class="form-control text-end shadow-none" id="validationCustom"
                 required></div>
           </div>
           <div class="col mb-4 mx-4">
@@ -52,7 +52,7 @@
                 Can't be zero.
               </div>
             </div>
-            <input type="text" class="form-control text-end fs-4 shadow-none" value="" id="inputPeopleText"
+            <input type="text" class="form-control text-end fs-4 shadow-none" value="-" id="inputPeopleText"
              onclick="resetPeopleValue()" onkeypress="return onlyNumberKey(event)" />
             <img src="images\icon-person.svg" role="img" alt="person_img" id="logoPerson">
           </div>
@@ -62,13 +62,13 @@
           <div class="col my-3 pt-4" style="background-color: #00494d; border-radius: 20px;">
             <div class="row row-cols-2 align-items-center p-5">
               <div class="col h-100 fs-6" style="color: white;"><b>Tip Amount</b><br> / person</div>
-              <div class="col h-100 text-end textSize fs-1" id="tipPerPerson">$0.00</div>
+              <div class="col h-100 text-end textSize fs-1" id="tipPerPerson">0.00</div>
               <div class="col h-100 fs-6" style="color: white;"><b>Total</b><br> / person</div>
-              <div class="col h-100 text-end textSize fs-1" id="tipTotal">$0.00</div>
+              <div class="col h-100 text-end textSize fs-1" id="tipTotal">0.00</div>
             </div>
             <div><br><br><br></div>
             <div class="col h-100 p-4">
-              <button type="button" id="resetButon" class="btn w-100 fs-4"
+              <button type="button" id="resetButon" class="btn w-100 fs-4 shadow-none"
                 style="background-color: #26c0ab;">Reset</button>
             </div>
           </div>

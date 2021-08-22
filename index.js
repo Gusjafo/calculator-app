@@ -1,45 +1,42 @@
-let bill = 0; 
-let people = 0;
-let percent = 10;
+let bill, people, percent = 0;
+let arrayBtn = document.getElementsByClassName("btnPercent");
 
+initialValues();
+cleanBorder(arrayBtn);
+setPercent(arrayBtn);
 
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function () {
-  'use strict'
+function cleanBorder(array) {
+  for (let index = 0; index < array.length; index++) {
+    array[index].classList.add("shadow-none");
+  }
+  // Another way to do the same
+  // Array.prototype.forEach.call(arrayBtn,function(element) {
+  //   element.classList.add("shadow-none");
+  // });
+  return;
+}
 
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  var forms = document.querySelectorAll('.needs-validation')
-
-  // Loop over them and prevent submission
-  Array.prototype.slice.call(forms)
-    .forEach(function (form) {
-      form.addEventListener('submit', function (event) {
-        if (!form.checkValidity()) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add('was-validated');
-      }, false)
-    })
-})()
+document.addEventListener("mousemove", outBorder);
+document.addEventListener("keyup", calculeValues);
+document.addEventListener("click", calculeValues);
+document.getElementById("resetButon").addEventListener("click", resetValues);
 
 
 function initialValues() {
-  // initial values for Bill and People
-  let inputBill = "0.00";
-  document.querySelector("#inputBillText").value = inputBill;
-  let inputPeople = "-";
-  document.querySelector("#inputPeopleText").value = inputPeople;
+  document.querySelector("#inputBillText").value = "0.00";
+  document.querySelector("#inputPeopleText").value = "-";
+  document.querySelector("#tipPerPerson").innerHTML = "$0.00";
+  document.querySelector("#tipTotal").innerHTML = "$0.00";
+  return;
 }
-
-initialValues();
 
 function resetBillValue() {
   bill = 0;
   let billFormField = document.querySelector("#inputBillText");
   billFormField.value = null;
   billFormField.style.backgroundColor = "#f4fafa";
-  billFormField.style.border = "0.15rem solid #26c0ab"
+  billFormField.style.border = "0.15rem solid #26c0ab";
+  return;
 }
 
 function resetPeopleValue() {
@@ -47,7 +44,8 @@ function resetPeopleValue() {
   let peopleFormField = document.querySelector("#inputPeopleText");
   peopleFormField.value = null;
   peopleFormField.style.backgroundColor = "#f4fafa";
-  peopleFormField.style.border = "0.15rem solid #26c0ab"
+  peopleFormField.style.border = "0.15rem solid #26c0ab";
+  return;
 }
 
 function onlyNumberKeyDot(evt) {
@@ -64,9 +62,8 @@ function onlyNumberKeyDot(evt) {
 
 function onlyNumberKey(evt) {
   let inputPeoplePut = document.querySelector("#inputPeopleText").value;
-  people = people + evt.key; 
+  people = people + evt.key;
   document.querySelector("#inputPeopleText").value = inputPeoplePut;
-
   let numberCero = document.getElementById("invalid-feedback");
   // Only ASCII character in that range allowed
   var ASCIICode = (evt.which) ? evt.which : evt.keyCode
@@ -75,32 +72,71 @@ function onlyNumberKey(evt) {
     return false;
   }
   numberCero.style.display = "none";
-  if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+  if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)) {
     return false;
-  return true;
+  } else {
+    return true;
+  }
 }
 
-let arrayBtn = document.getElementsByTagName("button");
-for (let index = 0; index < arrayBtn.length; index++) {
-  arrayBtn[index].classList.add("shadow-none");
-}
-// Another way to do the same
-// Array.prototype.forEach.call(arrayBtn,function(element) {
-//   element.classList.add("shadow-none");
-// });
-
-
-document.addEventListener("mousemove", function () {
+function outBorder() {
   let billFormField = document.querySelector("#inputBillText");
   billFormField.style.border = "none"
-
   let peopleFormField = document.querySelector("#inputPeopleText");
   peopleFormField.style.border = "none"
-})
+  return;
+}
 
-document.addEventListener("keydown", function(){
-  let tipPerson = (percent * bill / 100);
-  document.getElementById("tipPerPerson").innerHTML = tipPerson;
-})
+function calculeValues() {
+  let tipPerson = 0;
+  let totalPerson = 0;
+  if ((percent || bill || people) == 0 || (percent || bill || people) == "0") {
+    putResult(tipPerson, totalPerson);
+    return false;
+  } else {
+    tipPerson = (percent * bill / 100) / people;
+    totalPerson = (bill / people) + tipPerson;
+    putResult(tipPerson, totalPerson);
+    return;
+  }
+}
 
+function putResult(tipPerson, totalPerson) {
+  if (bill == (undefined || 0) ||
+    percent == (undefined || 0) ||
+    people == (undefined || 0)) {
+    document.getElementById("tipPerPerson").innerHTML = "$0.00";
+    document.getElementById("tipTotal").innerHTML = "$0.00";
+    return;
+  } else {
+    document.getElementById("tipPerPerson").innerHTML = "$" + tipPerson.toFixed(2);
+    document.getElementById("tipTotal").innerHTML = "$" + totalPerson.toFixed(2);
+  }
+  return;
+}
 
+function resetValues() {
+  bill, people = 0;
+  percent = 0;
+  resetBillValue();
+  resetPeopleValue();
+  initialValues();
+  resetClassBtnArray();
+  return;
+}
+
+function resetClassBtnArray() {
+  for (let index = 0; index < arrayBtn.length; index++) {
+    arrayBtn[index].classList.remove("btnSelected");
+  }
+}
+
+function setPercent(array) {
+  for (let index = 0; index < array.length; index++) {
+    array[index].addEventListener("click", function () {
+      percent = this.id;
+      array[index].classList.add("btnSelected");
+    });
+  }
+  return;
+}

@@ -26,6 +26,10 @@ body {
     text-align: center!important;    
 }
 
+.btnSelected {
+    background-color: blanchedalmond!important;
+}
+
 #logoDolar {
     padding-left: 20px;
     position: relative;
