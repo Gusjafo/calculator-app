@@ -9,6 +9,7 @@ body {
     border-style: hidden;
     background-color:#f4fafa;
 }
+
 .textSize {
     color: #26c0ab;
 }
@@ -39,4 +40,9 @@ body {
 
 #inputBillText, #inputPeopleText {
     color: #00494d;
+}
+
+#invalid-feedback {
+    display: none;
+    color: red;
 }
