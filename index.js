@@ -93,8 +93,7 @@ function outBorder() {
   return;
 }
 
-function calculeValues(evt) {
-  evt.preventDefault();
+function calculeValues() {
   let tipPerson = 0;
   let totalPerson = 0;
   if ((percent || bill || people) == 0 || (percent || bill || people) == "0") {
