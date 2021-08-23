@@ -22,8 +22,8 @@ document.addEventListener("DOMContentLoaded", startup);
 function startup() {
   document.addEventListener("mousemove", outBorder);
   document.addEventListener("keyup", calculeValues);
-  document.addEventListener("click", calculeValues); 
-  window.addEventListener("touchend", calculeValuesMobile, false);
+  document.addEventListener("click", calculeValues);
+  // window.addEventListener("touchend", calculeValuesMobile, false);
   document.getElementById("resetButon").addEventListener("click", resetValues);
 }
 
