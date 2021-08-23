@@ -19,7 +19,7 @@ function cleanBorder(array) {
 
 document.addEventListener("DOMContentLoaded", startup);
 
-function statup() {
+function startup() {
   document.addEventListener("mousemove", outBorder);
   document.addEventListener("keyup", calculeValues);
   document.addEventListener("click", calculeValues); 
