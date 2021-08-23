@@ -19,6 +19,7 @@ function cleanBorder(array) {
 document.addEventListener("mousemove", outBorder);
 document.addEventListener("keyup", calculeValues);
 document.addEventListener("click", calculeValues);
+document.addEventListener("touchmove", calculeValues);
 document.getElementById("resetButon").addEventListener("click", resetValues);
 
 
