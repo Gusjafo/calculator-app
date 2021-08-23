@@ -16,11 +16,16 @@ function cleanBorder(array) {
   return;
 }
 
-document.addEventListener("mousemove", outBorder);
-document.addEventListener("keyup", calculeValues);
-document.addEventListener("click", calculeValues);
-document.addEventListener("touchmove", calculeValues);
-document.getElementById("resetButon").addEventListener("click", resetValues);
+
+document.addEventListener("DOMContentLoaded", startup);
+
+function statup() {
+  document.addEventListener("mousemove", outBorder, false);
+  document.addEventListener("keyup", calculeValues, false);
+  document.addEventListener("click", calculeValues, false); 
+  document.addEventListener("touchend", calculeValues, false);
+  document.getElementById("resetButon").addEventListener("click", resetValues, false);
+}
 
 
 function initialValues() {
@@ -88,7 +93,8 @@ function outBorder() {
   return;
 }
 
-function calculeValues() {
+function calculeValues(evt) {
+  evt.preventDefault();
   let tipPerson = 0;
   let totalPerson = 0;
   if ((percent || bill || people) == 0 || (percent || bill || people) == "0") {
