@@ -17,14 +17,14 @@ function cleanBorder(array) {
 }
 
 
-document.addEventListener("DOMContentLoaded", startup, false);
+document.addEventListener("DOMContentLoaded", startup);
 
 function statup() {
-  document.addEventListener("mousemove", outBorder, false);
-  document.addEventListener("keyup", calculeValues, false);
-  document.addEventListener("click", calculeValues, false); 
+  document.addEventListener("mousemove", outBorder);
+  document.addEventListener("keyup", calculeValues);
+  document.addEventListener("click", calculeValues); 
   window.addEventListener("touchend", calculeValues, false);
-  document.getElementById("resetButon").addEventListener("click", resetValues, false);
+  document.getElementById("resetButon").addEventListener("click", resetValues);
 }
 
 
