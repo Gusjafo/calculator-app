@@ -17,13 +17,13 @@ function cleanBorder(array) {
 }
 
 
-document.addEventListener("DOMContentLoaded", startup);
+document.addEventListener("DOMContentLoaded", startup, false);
 
 function statup() {
   document.addEventListener("mousemove", outBorder, false);
   document.addEventListener("keyup", calculeValues, false);
   document.addEventListener("click", calculeValues, false); 
-  document.addEventListener("touchend", calculeValues, false);
+  window.addEventListener("touchend", calculeValues, false);
   document.getElementById("resetButon").addEventListener("click", resetValues, false);
 }
 
