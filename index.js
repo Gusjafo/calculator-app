@@ -23,7 +23,7 @@ function startup() {
   document.addEventListener("mousemove", outBorder);
   document.addEventListener("keyup", calculeValues);
   document.addEventListener("click", calculeValues); 
-  window.addEventListener("touchend", calculeValues, false);
+  window.addEventListener("touchend", calculeValuesMobile, false);
   document.getElementById("resetButon").addEventListener("click", resetValues);
 }
 
@@ -94,6 +94,21 @@ function outBorder() {
 }
 
 function calculeValues() {
+  let tipPerson = 0;
+  let totalPerson = 0;
+  if ((percent || bill || people) == 0 || (percent || bill || people) == "0") {
+    putResult(tipPerson, totalPerson);
+    return false;
+  } else {
+    tipPerson = (percent * bill / 100) / people;
+    totalPerson = (bill / people) + tipPerson;
+    putResult(tipPerson, totalPerson);
+    return;
+  }
+}
+
+function calculeValuesMobile(evt) {
+  evt.preventDefault();
   let tipPerson = 0;
   let totalPerson = 0;
   if ((percent || bill || people) == 0 || (percent || bill || people) == "0") {
