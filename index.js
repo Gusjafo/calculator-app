@@ -30,10 +30,10 @@ function initialValues() {
   return;
 }
 
-document.addEventListener("keyup", function(){
-  document.getElementById("billOutput").innerHTML = bill;
-  document.getElementById("peopleOutput").innerHTML = people;
-  document.getElementById("percentOutput").innerHTML = percent;
+document.addEventListener("keyup", function () {
+  // document.getElementById("billOutput").innerHTML = bill;
+  // document.getElementById("peopleOutput").innerHTML = people;
+  // document.getElementById("percentOutput").innerHTML = percent;
 });
 
 
@@ -77,11 +77,15 @@ function resetCustomValue() {
 
 function onlyNumberKeyDot(evt) {
   let inputBillPut = document.querySelector("#inputBillText").value;
+  document.getElementById("peopleOutput").innerHTML = inputBillPut;
+  document.getElementById("billOutput").innerHTML = evt.key;
+  console.log(evt.key);
   bill = bill + evt.key;
   console.log(bill);
   document.querySelector("#inputBillText").value = inputBillPut;
   // Only ASCII character in that range allowed
   var ASCIICode = (evt.which) ? evt.which : evt.keyCode;
+  document.getElementById("percentOutput").innerHTML = ASCIICode;
   if (ASCIICode > 31 && (ASCIICode < 46 || ASCIICode > 57) || (ASCIICode == 47))
     return false;
   return true;
@@ -115,11 +119,11 @@ function onlyCustomValue(evt) {
   console.log(percent);
   document.querySelector("#inputCustomField").value = inCustomPercent;
   // document.getElementById("inputCustomField").addEventListener("input", calculeValues);
- // Only ASCII character in that range allowed
- var ASCIICode = (evt.which) ? evt.which : evt.keyCode;
- if (ASCIICode > 31 && (ASCIICode < 46 || ASCIICode > 57) || (ASCIICode == 47))
-   return false;
- return true;
+  // Only ASCII character in that range allowed
+  var ASCIICode = (evt.which) ? evt.which : evt.keyCode;
+  if (ASCIICode > 31 && (ASCIICode < 46 || ASCIICode > 57) || (ASCIICode == 47))
+    return false;
+  return true;
 }
 // (e.keyCode >= 96 && e.keyCode <= 105)
 
@@ -197,6 +201,23 @@ function setPercent(array) {
 function setCalculateValues(array) {
   for (let index = 0; index < array.length; index++) {
     array[index].addEventListener("click", calculeValues);
-  }  
+  }
   return;
 }
+
+
+var responsiveClass = document.getElementsByClassName('container')[0].classList;
+
+var minWidth769 = window.matchMedia("(min-width: 769px)");
+
+function match() {
+  if (minWidth769.matches) {
+    responsiveClass.add('px-5')
+  } else {
+    responsiveClass.remove('px-5');
+  }
+}
+
+minWidth769.addListener(match);
+
+match();
