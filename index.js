@@ -67,8 +67,8 @@ function resetCustomValue() {
 function onlyNumberKeyDot(evt) {
   let inputBillPut = document.querySelector("#inputBillText").value;
   bill = bill + evt.key;
+  console.log(bill);
   document.querySelector("#inputBillText").value = inputBillPut;
-
   // Only ASCII character in that range allowed
   var ASCIICode = (evt.which) ? evt.which : evt.keyCode;
   if (ASCIICode > 31 && (ASCIICode < 46 || ASCIICode > 57) || (ASCIICode == 47))
@@ -79,12 +79,15 @@ function onlyNumberKeyDot(evt) {
 function onlyNumberKey(evt) {
   let inputPeoplePut = document.querySelector("#inputPeopleText").value;
   people = people + evt.key;
-  document.querySelector("#inputPeopleText").value = inputPeoplePut;
+  let fieldPeople = document.querySelector("#inputPeopleText");
+  fieldPeople.value = inputPeoplePut;
+  fieldPeople.addEventListener("input", calculeValues);
   let numberCero = document.getElementById("invalid-feedback");
   // Only ASCII character in that range allowed
   var ASCIICode = (evt.which) ? evt.which : evt.keyCode;
   if (inputPeoplePut == 0 && ASCIICode == 48) {
     numberCero.style.display = "block";
+    fieldPeople.style.border = "0.2rem red solid";
     return false;
   }
   numberCero.style.display = "none";
@@ -98,7 +101,9 @@ function onlyNumberKey(evt) {
 function onlyCustomValue(evt) {
   let inCustomPercent = document.querySelector("#inputCustomField").value;
   percent = percent + evt.key;
+  console.log(percent);
   document.querySelector("#inputCustomField").value = inCustomPercent;
+  // document.getElementById("inputCustomField").addEventListener("input", calculeValues);
  // Only ASCII character in that range allowed
  var ASCIICode = (evt.which) ? evt.which : evt.keyCode;
  if (ASCIICode > 31 && (ASCIICode < 46 || ASCIICode > 57) || (ASCIICode == 47))
@@ -120,6 +125,10 @@ function outBorder() {
 function calculeValues() {
   let tipPerson = 0;
   let totalPerson = 0;
+  percent = parseFloat(percent);
+  bill = parseFloat(bill);
+  people = parseFloat(people);
+  console.log(bill, percent, people);
   if ((percent || bill || people) == 0 || (percent || bill || people) == "0") {
     putResult(tipPerson, totalPerson);
     return false;
@@ -177,7 +186,6 @@ function setPercent(array) {
 function setCalculateValues(array) {
   for (let index = 0; index < array.length; index++) {
     array[index].addEventListener("click", calculeValues);
-  }
-  document.getElementById("inputCustomField").addEventListener("input", calculeValues);
+  }  
   return;
 }
