@@ -177,5 +177,6 @@ function setCalculateValues(array) {
   for (let index = 0; index < array.length; index++) {
     array[index].addEventListener("click", calculeValues);
   }
+  document.getElementById("inputCustomField").addEventListener("input", calculeValues);
   return;
 }
