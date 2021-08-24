@@ -1,5 +1,9 @@
 document.addEventListener("DOMContentLoaded", startup);
-let bill, people, percent = 0;
+let bill = 0;
+let people = 0;
+let percent = 0;
+
+
 
 function startup() {
   let arrayBtn = document.getElementsByClassName("btnPercent");
@@ -25,6 +29,13 @@ function initialValues() {
   document.querySelector("#inputCustomField").value = "Custom";
   return;
 }
+
+document.addEventListener("keyup", function(){
+  document.getElementById("billOutput").innerHTML = bill;
+  document.getElementById("peopleOutput").innerHTML = people;
+  document.getElementById("percentOutput").innerHTML = percent;
+});
+
 
 function cleanBorder(array) {
   for (let index = 0; index < array.length; index++) {
