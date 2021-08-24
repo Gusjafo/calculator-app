@@ -1,28 +1,21 @@
-let bill, people, percent = 0;
-let arrayBtn = document.getElementsByClassName("btnPercent");
-
-initialValues();
-cleanBorder(arrayBtn);
-setPercent(arrayBtn);
-
-function cleanBorder(array) {
-  for (let index = 0; index < array.length; index++) {
-    array[index].classList.add("shadow-none");
-  }
-  // Another way to do the same
-  // Array.prototype.forEach.call(arrayBtn,function(element) {
-  //   element.classList.add("shadow-none");
-  // });
-  return;
-}
-
-
 document.addEventListener("DOMContentLoaded", startup);
+let bill, people, percent = 0;
 
 function startup() {
+  let arrayBtn = document.getElementsByClassName("btnPercent");
+
+  initialValues();
+  cleanBorder(arrayBtn);
+  setPercent(arrayBtn);
+  setCalculateValues(arrayBtn);
+
+
+ 
   document.addEventListener("mousemove", outBorder);
-  document.addEventListener("keyup", calculeValues);
-  document.addEventListener("click", calculeValues);
+  // document.addEventListener("keyup", calculeValues);
+  
+
+
   // window.addEventListener("touchend", calculeValuesMobile, false);
   document.getElementById("resetButon").addEventListener("click", resetValues);
 }
@@ -33,6 +26,17 @@ function initialValues() {
   document.querySelector("#inputPeopleText").value = "-";
   document.querySelector("#tipPerPerson").innerHTML = "$0.00";
   document.querySelector("#tipTotal").innerHTML = "$0.00";
+  return;
+}
+
+function cleanBorder(array) {
+  for (let index = 0; index < array.length; index++) {
+    array[index].classList.add("shadow-none");
+  }
+  // Another way to do the same
+  // Array.prototype.forEach.call(arrayBtn,function(element) {
+  //   element.classList.add("shadow-none");
+  // });
   return;
 }
 
@@ -107,20 +111,20 @@ function calculeValues() {
   }
 }
 
-function calculeValuesMobile(evt) {
-  evt.preventDefault();
-  let tipPerson = 0;
-  let totalPerson = 0;
-  if ((percent || bill || people) == 0 || (percent || bill || people) == "0") {
-    putResult(tipPerson, totalPerson);
-    return false;
-  } else {
-    tipPerson = (percent * bill / 100) / people;
-    totalPerson = (bill / people) + tipPerson;
-    putResult(tipPerson, totalPerson);
-    return;
-  }
-}
+// function calculeValuesMobile(evt) {
+//   evt.preventDefault();
+//   let tipPerson = 0;
+//   let totalPerson = 0;
+//   if ((percent || bill || people) == 0 || (percent || bill || people) == "0") {
+//     putResult(tipPerson, totalPerson);
+//     return false;
+//   } else {
+//     tipPerson = (percent * bill / 100) / people;
+//     totalPerson = (bill / people) + tipPerson;
+//     putResult(tipPerson, totalPerson);
+//     return;
+//   }
+// }
 
 function putResult(tipPerson, totalPerson) {
   if (bill == (undefined || 0) ||
@@ -147,9 +151,11 @@ function resetValues() {
 }
 
 function resetClassBtnArray() {
-  for (let index = 0; index < arrayBtn.length; index++) {
-    arrayBtn[index].classList.remove("btnSelected");
+  let array = document.getElementsByClassName("btnPercent");
+  for (let index = 0; index < array.length; index++) {
+    array[index].classList.remove("btnSelected");
   }
+  return;
 }
 
 function setPercent(array) {
@@ -158,6 +164,13 @@ function setPercent(array) {
       percent = this.id;
       array[index].classList.add("btnSelected");
     });
+  }
+  return;
+}
+
+function setCalculateValues(array) {
+  for (let index = 0; index < array.length; index++) {
+    array[index].addEventListener("click", calculeValues);
   }
   return;
 }
