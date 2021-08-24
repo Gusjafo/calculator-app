@@ -9,12 +9,8 @@ function startup() {
   setPercent(arrayBtn);
   setCalculateValues(arrayBtn);
 
-
- 
   document.addEventListener("mousemove", outBorder);
   // document.addEventListener("keyup", calculeValues);
-  
-
 
   // window.addEventListener("touchend", calculeValuesMobile, false);
   document.getElementById("resetButon").addEventListener("click", resetValues);
@@ -26,6 +22,7 @@ function initialValues() {
   document.querySelector("#inputPeopleText").value = "-";
   document.querySelector("#tipPerPerson").innerHTML = "$0.00";
   document.querySelector("#tipTotal").innerHTML = "$0.00";
+  document.querySelector("#inputCustomField").value = "Custom";
   return;
 }
 
@@ -58,13 +55,22 @@ function resetPeopleValue() {
   return;
 }
 
+function resetCustomValue() {
+  percent = 0;
+  let customFormField = document.querySelector("#inputCustomField");
+  customFormField.value = null;
+  customFormField.style.backgroundColor = "#f4fafa";
+  customFormField.style.border = "0.15rem solid #26c0ab";
+  return;
+}
+
 function onlyNumberKeyDot(evt) {
   let inputBillPut = document.querySelector("#inputBillText").value;
   bill = bill + evt.key;
   document.querySelector("#inputBillText").value = inputBillPut;
 
   // Only ASCII character in that range allowed
-  var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+  var ASCIICode = (evt.which) ? evt.which : evt.keyCode;
   if (ASCIICode > 31 && (ASCIICode < 46 || ASCIICode > 57) || (ASCIICode == 47))
     return false;
   return true;
@@ -76,7 +82,7 @@ function onlyNumberKey(evt) {
   document.querySelector("#inputPeopleText").value = inputPeoplePut;
   let numberCero = document.getElementById("invalid-feedback");
   // Only ASCII character in that range allowed
-  var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+  var ASCIICode = (evt.which) ? evt.which : evt.keyCode;
   if (inputPeoplePut == 0 && ASCIICode == 48) {
     numberCero.style.display = "block";
     return false;
@@ -89,11 +95,24 @@ function onlyNumberKey(evt) {
   }
 }
 
+function onlyCustomValue(evt) {
+  let inCustomPercent = document.querySelector("#inputCustomField").value;
+  percent = percent + evt.key;
+  document.querySelector("#inputCustomField").value = inCustomPercent;
+ // Only ASCII character in that range allowed
+ var ASCIICode = (evt.which) ? evt.which : evt.keyCode;
+ if (ASCIICode > 31 && (ASCIICode < 46 || ASCIICode > 57) || (ASCIICode == 47))
+   return false;
+ return true;
+}
+
 function outBorder() {
   let billFormField = document.querySelector("#inputBillText");
-  billFormField.style.border = "none"
+  billFormField.style.border = "none";
   let peopleFormField = document.querySelector("#inputPeopleText");
-  peopleFormField.style.border = "none"
+  peopleFormField.style.border = "none";
+  let customFormField = document.querySelector("#inputCustomField");
+  customFormField.style.border = "none"
   return;
 }
 
@@ -110,21 +129,6 @@ function calculeValues() {
     return;
   }
 }
-
-// function calculeValuesMobile(evt) {
-//   evt.preventDefault();
-//   let tipPerson = 0;
-//   let totalPerson = 0;
-//   if ((percent || bill || people) == 0 || (percent || bill || people) == "0") {
-//     putResult(tipPerson, totalPerson);
-//     return false;
-//   } else {
-//     tipPerson = (percent * bill / 100) / people;
-//     totalPerson = (bill / people) + tipPerson;
-//     putResult(tipPerson, totalPerson);
-//     return;
-//   }
-// }
 
 function putResult(tipPerson, totalPerson) {
   if (bill == (undefined || 0) ||
@@ -145,12 +149,13 @@ function resetValues() {
   percent = 0;
   resetBillValue();
   resetPeopleValue();
+  resetCustomValue();
   initialValues();
-  resetClassBtnArray();
+  removeClassBtnSelected();
   return;
 }
 
-function resetClassBtnArray() {
+function removeClassBtnSelected() {
   let array = document.getElementsByClassName("btnPercent");
   for (let index = 0; index < array.length; index++) {
     array[index].classList.remove("btnSelected");
