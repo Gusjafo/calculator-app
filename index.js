@@ -105,6 +105,7 @@ function onlyCustomValue(evt) {
    return false;
  return true;
 }
+// (e.keyCode >= 96 && e.keyCode <= 105)
 
 function outBorder() {
   let billFormField = document.querySelector("#inputBillText");
@@ -123,8 +124,8 @@ function calculeValues() {
     putResult(tipPerson, totalPerson);
     return false;
   } else {
-    tipPerson = (percent * bill / 100) / people;
-    totalPerson = (bill / people) + tipPerson;
+    tipPerson = ((percent * bill / 100) / people);
+    totalPerson = ((bill / people) + tipPerson);
     putResult(tipPerson, totalPerson);
     return;
   }
