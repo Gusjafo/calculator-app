@@ -29,7 +29,7 @@
         <div class="col" id="columnOne" style="background-color: #ffffff;">
           <div class="col m-4 mb-1">
             <label for="inputBillText" class="form-label">Bill</label>
-            <input type="tel" class="shadow-none form-control text-end fs-4" value="" id="inputBillText"
+            <input type="tel" class="shadow-none form-control text-end fs-4" pattern="[0-9]+([.][0-9]+)?" value="" id="inputBillText"
               onclick="resetBillValue()" onkeypress="return onlyNumberKeyDot(event)" />
             <img src="images\icon-dollar.svg" role="img" alt="dollar_img" id="logoDolar">
           </div>
@@ -40,7 +40,7 @@
             <div class="col mt-3"><button type="button" id="15" class="btn btnPercent w-100">15%</button></div>
             <div class="col mt-3"><button type="button" id="25" class="btn btnPercent w-100">25%</button></div>
             <div class="col mt-3"><button type="button" id="50" class="btn btnPercent w-100">50%</button></div>
-            <div class="col mt-3"><input type="tel" value="" class="form-control fs-5" id="inputCustomField"
+            <div class="col mt-3"><input type="tel" value="" pattern="[0-9]+([.][0-9]+)?" class="form-control fs-5" id="inputCustomField"
               onclick="resetCustomValue()" onkeypress="return onlyCustomValue(event)" /></div>
           </div>
           <div class="col mb-0 mx-4">

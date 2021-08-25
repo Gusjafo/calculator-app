@@ -78,14 +78,15 @@ function resetCustomValue() {
 function onlyNumberKeyDot(evt) {
   let inputBillPut = document.querySelector("#inputBillText").value;
   document.getElementById("peopleOutput").innerHTML = inputBillPut;
+  console.log(inputBillPut);
   document.getElementById("billOutput").innerHTML = evt.key;
-  console.log(evt.key);
-  bill = bill + evt.key;
-  console.log(bill);
+  console.log("evt.key", evt.key);
+  bill = bill + evt.key;  
   document.querySelector("#inputBillText").value = inputBillPut;
   // Only ASCII character in that range allowed
   var ASCIICode = (evt.which) ? evt.which : evt.keyCode;
   document.getElementById("percentOutput").innerHTML = ASCIICode;
+  console.log(ASCIICode);
   if (ASCIICode > 31 && (ASCIICode < 46 || ASCIICode > 57) || (ASCIICode == 47))
     return false;
   return true;
