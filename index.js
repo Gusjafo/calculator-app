@@ -92,14 +92,11 @@ function onlyNumberKeyDot(evt) {
     let keyPush = evt;
     console.log(evt);
     bill = bill + keyPush;
-    document.querySelector("#inputBillText").value = inputBillPut;
+    document.querySelector("#inputBillText").value = inputBillPut;    
     return false;
   } else
     if (evt == "Unidentified" || evt == ".") {
-      // let inputBillPut = document.querySelector("#inputBillText").value;
       bill = bill + ".";
-      console.log(bill);
-      // document.querySelector("#inputBillText").value = inputBillPut + ".";
       return false;
     } else return false;
 }
@@ -107,17 +104,14 @@ function onlyNumberKeyDot(evt) {
 function onlyNumberKey(evt) {
   let ASCIICode = (evt.which) ? evt.which : evt.keyCode;
   if (ASCIICode >= 48 && ASCIICode <= 57) {
-    let inputPeoplePut = document.querySelector("#inputPeopleText").value;
+    let inputPeoplePut = document.querySelector("#inputPeopleText");
     people = people + evt.key;
-    let fieldPeople = document.querySelector("#inputPeopleText");
-    fieldPeople.value = inputPeoplePut;
-    fieldPeople.addEventListener("input", calculeValues);
+    inputPeoplePut.addEventListener("input", calculeValues);
     let numberCero = document.getElementById("invalid-feedback");
     numberCero.style.display = "none";
-
-    if (inputPeoplePut == 0 && ASCIICode == 48) {
+    if (inputPeoplePut.value == 0 && ASCIICode == 48) {
       numberCero.style.display = "block";
-      fieldPeople.style.border = "0.2rem red solid";
+      inputPeoplePut.style.border = "0.1rem red solid";
     }
     return true;
   } else {
@@ -131,6 +125,7 @@ function onlyCustomValue(evt) {
     let inCustomPercent = document.querySelector("#inputCustomField").value;
     percent = percent + evt.key;
     document.querySelector("#inputCustomField").value = inCustomPercent;
+    document.querySelector("#inputCustomField").addEventListener("input", calculeValues);
     return true;
   } else {
     return false;
@@ -141,8 +136,6 @@ function onlyCustomValue(evt) {
 function outBorder() {
   let billFormField = document.querySelector("#inputBillText");
   billFormField.style.border = "none";
-  let peopleFormField = document.querySelector("#inputPeopleText");
-  peopleFormField.style.border = "none";
   let customFormField = document.querySelector("#inputCustomField");
   customFormField.style.border = "none"
   return;
@@ -152,7 +145,14 @@ function calculeValues() {
   let tipPerson = 0;
   let totalPerson = 0;
   bill = parseFloat(bill).toFixed(2);
-  if ((percent || bill || people) == 0 || (percent || bill || people) == "0") {
+  if ((bill || people) == 0 || (bill || people) == "0") {
+    putResult(tipPerson, totalPerson);
+    console.log("total" + totalPerson);
+    return;
+  } else if (percent == 0 || percent == '0') {
+    tipPerson = 0;
+    totalPerson = (bill / people);
+    console.log("total" + totalPerson);
     putResult(tipPerson, totalPerson);
     return;
   } else {
@@ -165,7 +165,6 @@ function calculeValues() {
 
 function putResult(tipPerson, totalPerson) {
   if (bill == (undefined || 0) ||
-    percent == (undefined || 0) ||
     people == (undefined || 0)) {
     document.getElementById("tipPerPerson").innerHTML = "$0.00";
     document.getElementById("tipTotal").innerHTML = "$0.00";
