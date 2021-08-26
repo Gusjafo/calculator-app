@@ -72,22 +72,22 @@ function resetCustomValue() {
 
 function onlyNumberKeyDot(evt) {
   var ASCIICode = (evt.which) ? evt.which : evt.keyCode;
-  console.log(ASCIICode);
   if (((ASCIICode >= 46 && ASCIICode <= 57) && (ASCIICode != 47))){
     let inputBillPut = document.querySelector("#inputBillText").value;
-    document.getElementById("peopleOutput").innerHTML = inputBillPut;
     console.log(inputBillPut);
-    document.getElementById("billOutput").innerHTML = evt.key;
-    console.log("evt.key", evt.key);
     let keyPush = evt.key;
+    console.log(evt.key);
     bill = bill + keyPush;
-    document.querySelector("#inputBillText").value = inputBillPut;
-    // Only ASCII character in that range allowed    
-    document.getElementById("percentOutput").innerHTML = ASCIICode;    
+    document.querySelector("#inputBillText").value = inputBillPut;   
     return true;
-  } else {
+  } else
+  if (((ASCIICode < 46 || ASCIICode > 57) || (ASCIICode == 47))) {   
+    let inputBillPut = document.querySelector("#inputBillText").value;       
+    bill = bill + ".";
+    console.log(bill);
+    document.querySelector("#inputBillText").value = inputBillPut + "."; 
     return false;
-  } 
+  } else return false;
 }
 
 function onlyNumberKey(evt) {
@@ -116,7 +116,6 @@ function onlyCustomValue(evt) {
   if ((ASCIICode >= 46 && ASCIICode <= 57) && (ASCIICode != 47)) {
     let inCustomPercent = document.querySelector("#inputCustomField").value;
     percent = percent + evt.key;
-    console.log(percent);
     document.querySelector("#inputCustomField").value = inCustomPercent;
     return true;
   } else {
