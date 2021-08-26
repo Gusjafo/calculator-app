@@ -15,7 +15,14 @@ function startup() {
   setPercent(arrayBtn);
   setCalculateValues(arrayBtn);
 
-  document.getElementById("inputBillText").addEventListener("click", resetBillValue);
+  bilListener = document.getElementById("inputBillText");
+
+  bilListener.addEventListener("click", resetBillValue);
+  bilListener.addEventListener("keydown", function(event) {
+    const p = document.createElement("p");
+    p.textContent = `KeyboardEvent: key='${event.key}' | code='${event.code}'`;
+    document.getElementById("output").appendChild(p);
+  }, true);
 
   document.addEventListener("mousemove", outBorder);
   // document.addEventListener("keyup", calculeValues);

@@ -30,8 +30,7 @@
             <label for="inputBillText" id="billOutput" class="form-label">Bill</label>
             <div id="peopleOutput"></div>
             <div id="percentOutput"></div>
-            <input type="tel" class="shadow-none form-control text-end fs-4" value="" id="inputBillText"
-               oninput="return onlyNumberKeyDot(event)">
+            <input type="tel" class="shadow-none form-control text-end fs-4" value="" id="inputBillText">
             <img src="images\icon-dollar.svg" role="img" alt="dollar_img" id="logoDolar">
           </div>
           <div class="col mx-4 fs-6">Select Tip %</div>
@@ -79,6 +78,10 @@
       </div>
     </div>
 
+    <p>Press keys on the keyboard to see what the KeyboardEvent's key and code
+      values are for each one.</p>
+   <div id="output">
+   </div>
 
     <div class="attribution text-center mt-5 mb-2 px-5">
       Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
