@@ -23,12 +23,11 @@
     <div class="text-center my-5">
       <img src="images\logo.svg" alt="logo_img">
     </div>
-    <div id="billOutput"></div>
     <div id="contenedor m-0 p-0" style="background-color: #ffffff; border-radius: 20px;">
       <div class="row row-cols-1 mx-4 row-cols-md-2 align-items-center g-0">
         <div class="col" id="columnOne" style="background-color: #ffffff;">
           <div class="col m-4 mb-1">
-            <label for="inputBillText" class="form-label">Bill</label>
+            <label for="inputBillText" id="billOutput" class="form-label">Bill</label>
             <input type="tel" class="shadow-none form-control text-end fs-4" value="" id="inputBillText"
             onkeypress="return onlyNumberKeyDot(event)">
             <img src="images\icon-dollar.svg" role="img" alt="dollar_img" id="logoDolar">
@@ -75,7 +74,6 @@
         </div>
       </div>
     </div>
-    <div id="billOutput"></div>
     <div id="peopleOutput"></div>
     <div id="percentOutput"></div>
 

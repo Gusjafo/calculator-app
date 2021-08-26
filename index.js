@@ -5,6 +5,8 @@ let percent = 0;
 
 
 
+
+
 function startup() {
   let arrayBtn = document.getElementsByClassName("btnPercent");
 
@@ -71,6 +73,7 @@ function resetCustomValue() {
 }
 
 function onlyNumberKeyDot(evt) {
+  document.getElementById("billOutput").innerHTML = "bill: " + bill;
   var ASCIICode = (evt.which) ? evt.which : evt.keyCode;
   if (((ASCIICode >= 46 && ASCIICode <= 57) && (ASCIICode != 47))){
     let inputBillPut = document.querySelector("#inputBillText").value;
@@ -138,11 +141,13 @@ function calculeValues() {
   let tipPerson = 0;
   let totalPerson = 0;
   bill = parseFloat(bill).toFixed(2);
+  document.getElementById("peopleOutput").innerHTML = "bill in calculeValue: " + bill;
+  
+  document.getElementById("percentOutput").innerHTML = "percent: " + percent + " people: " + people;
   console.log(bill, percent, people);
-  document.getElementById("billOutput").innerHTML = "bill: " + bill;
   if ((percent || bill || people) == 0 || (percent || bill || people) == "0") {
     putResult(tipPerson, totalPerson);
-    return false;
+    return;
   } else {
     tipPerson = ((percent * bill / 100) / people);
     totalPerson = ((bill / people) + tipPerson);
