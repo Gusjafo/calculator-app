@@ -18,10 +18,9 @@ function startup() {
   bilListener = document.getElementById("inputBillText");
 
   bilListener.addEventListener("click", resetBillValue);
+
   bilListener.addEventListener("keydown", function(event) {
-    const p = document.createElement("p");
-    p.textContent = `KeyboardEvent: key='${event.key}' | code='${event.code}'`;
-    document.getElementById("output").appendChild(p);
+    onlyNumberKeyDot(event.key);
   }, true);
 
   document.addEventListener("mousemove", outBorder);
@@ -81,28 +80,21 @@ function resetCustomValue() {
 
 function onlyNumberKeyDot(evt) {
   document.getElementById("billOutput").innerHTML = "bill: " + bill;
-  var ASCIICode = (evt.which) ? evt.which : evt.keyCode;
-  if (ASCIICode == 0 || ASCIICode == 229) { //for android chrome keycode fix
-    ASCIICode = getKeyCode(this.value);
-    var getKeyCode = function (str) {
-      return str.charCodeAt(str.length - 1);
-    }
-  };
-document.getElementById("peopleOutput").innerHTML = "ASCIIcode: " + ASCIICode;
-if (((ASCIICode >= 46 && ASCIICode <= 57) && (ASCIICode != 47))) {
+ 
+if (evt >= 0 && evt <= 9) {
   let inputBillPut = document.querySelector("#inputBillText").value;
   console.log(inputBillPut);
-  let keyPush = evt.key;
-  console.log(evt.key);
+  let keyPush = evt;
+  console.log(evt);
   bill = bill + keyPush;
   document.querySelector("#inputBillText").value = inputBillPut;
-  return true;
+  return false;
 } else
-  if (((ASCIICode < 46 || ASCIICode > 57) || (ASCIICode == 47))) {
-    let inputBillPut = document.querySelector("#inputBillText").value;
+  if ( evt == "Unidentified" || evt == ".") {
+    // let inputBillPut = document.querySelector("#inputBillText").value;
     bill = bill + ".";
     console.log(bill);
-    document.querySelector("#inputBillText").value = inputBillPut + ".";
+    // document.querySelector("#inputBillText").value = inputBillPut + ".";
     return false;
   } else return false;
 }
