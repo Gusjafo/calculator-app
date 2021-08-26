@@ -13,9 +13,10 @@ function startup() {
   setPercent(arrayBtn);
   setCalculateValues(arrayBtn);
 
+  document.getElementById("inputBillText").addEventListener("click", resetBillValue);
+
   document.addEventListener("mousemove", outBorder);
   // document.addEventListener("keyup", calculeValues);
-
   // window.addEventListener("touchend", calculeValuesMobile, false);
   document.getElementById("resetButon").addEventListener("click", resetValues);
 }
@@ -29,12 +30,6 @@ function initialValues() {
   document.querySelector("#inputCustomField").value = "Custom";
   return;
 }
-
-document.addEventListener("keyup", function () {
-  // document.getElementById("billOutput").innerHTML = bill;
-  // document.getElementById("peopleOutput").innerHTML = people;
-  // document.getElementById("percentOutput").innerHTML = percent;
-});
 
 
 function cleanBorder(array) {
@@ -76,57 +71,58 @@ function resetCustomValue() {
 }
 
 function onlyNumberKeyDot(evt) {
-  let inputBillPut = document.querySelector("#inputBillText").value;
-  document.getElementById("peopleOutput").innerHTML = inputBillPut;
-  console.log(inputBillPut);
-  document.getElementById("billOutput").innerHTML = evt.key;
-  console.log("evt.key", evt.key);
-  bill = bill + evt.key;  
-  document.querySelector("#inputBillText").value = inputBillPut;
-  // Only ASCII character in that range allowed
   var ASCIICode = (evt.which) ? evt.which : evt.keyCode;
-  document.getElementById("percentOutput").innerHTML = ASCIICode;
   console.log(ASCIICode);
-  if (ASCIICode > 31 && (ASCIICode < 46 || ASCIICode > 57) || (ASCIICode == 47))
+  if (((ASCIICode >= 46 && ASCIICode <= 57) && (ASCIICode != 47))){
+    let inputBillPut = document.querySelector("#inputBillText").value;
+    document.getElementById("peopleOutput").innerHTML = inputBillPut;
+    console.log(inputBillPut);
+    document.getElementById("billOutput").innerHTML = evt.key;
+    console.log("evt.key", evt.key);
+    bill = bill + evt.key;
+    document.querySelector("#inputBillText").value = inputBillPut;
+    // Only ASCII character in that range allowed    
+    document.getElementById("percentOutput").innerHTML = ASCIICode;    
+    return true;
+  } else {
     return false;
-  return true;
+  } 
 }
 
 function onlyNumberKey(evt) {
-  let inputPeoplePut = document.querySelector("#inputPeopleText").value;
-  people = people + evt.key;
-  let fieldPeople = document.querySelector("#inputPeopleText");
-  fieldPeople.value = inputPeoplePut;
-  fieldPeople.addEventListener("input", calculeValues);
-  let numberCero = document.getElementById("invalid-feedback");
-  // Only ASCII character in that range allowed
-  var ASCIICode = (evt.which) ? evt.which : evt.keyCode;
-  if (inputPeoplePut == 0 && ASCIICode == 48) {
-    numberCero.style.display = "block";
-    fieldPeople.style.border = "0.2rem red solid";
-    return false;
-  }
-  numberCero.style.display = "none";
-  if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57)) {
-    return false;
-  } else {
+  var ASCIICode = (evt.which) ? evt.which : evt.keyCode;  
+  if (ASCIICode >= 48 && ASCIICode <= 57) {
+    let inputPeoplePut = document.querySelector("#inputPeopleText").value;
+    people = people + evt.key;
+    let fieldPeople = document.querySelector("#inputPeopleText");
+    fieldPeople.value = inputPeoplePut;
+    fieldPeople.addEventListener("input", calculeValues);
+    let numberCero = document.getElementById("invalid-feedback");
+    numberCero.style.display = "none"; 
+
+    if (inputPeoplePut == 0 && ASCIICode == 48) {
+      numberCero.style.display = "block";
+      fieldPeople.style.border = "0.2rem red solid";      
+    }
     return true;
+  } else {
+    return false;
   }
 }
 
 function onlyCustomValue(evt) {
-  let inCustomPercent = document.querySelector("#inputCustomField").value;
-  percent = percent + evt.key;
-  console.log(percent);
-  document.querySelector("#inputCustomField").value = inCustomPercent;
-  // document.getElementById("inputCustomField").addEventListener("input", calculeValues);
-  // Only ASCII character in that range allowed
   var ASCIICode = (evt.which) ? evt.which : evt.keyCode;
-  if (ASCIICode > 31 && (ASCIICode < 46 || ASCIICode > 57) || (ASCIICode == 47))
+  if ((ASCIICode >= 46 && ASCIICode <= 57) && (ASCIICode != 47)) {
+    let inCustomPercent = document.querySelector("#inputCustomField").value;
+    percent = percent + evt.key;
+    console.log(percent);
+    document.querySelector("#inputCustomField").value = inCustomPercent;
+    return true;
+  } else {
     return false;
-  return true;
+  }
 }
-// (e.keyCode >= 96 && e.keyCode <= 105)
+
 
 function outBorder() {
   let billFormField = document.querySelector("#inputBillText");
