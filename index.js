@@ -79,7 +79,8 @@ function onlyNumberKeyDot(evt) {
     console.log(inputBillPut);
     document.getElementById("billOutput").innerHTML = evt.key;
     console.log("evt.key", evt.key);
-    bill = bill + evt.key;
+    let keyPush = evt.key;
+    bill = bill + keyPush;
     document.querySelector("#inputBillText").value = inputBillPut;
     // Only ASCII character in that range allowed    
     document.getElementById("percentOutput").innerHTML = ASCIICode;    
@@ -137,9 +138,7 @@ function outBorder() {
 function calculeValues() {
   let tipPerson = 0;
   let totalPerson = 0;
-  percent = parseFloat(percent);
-  bill = parseFloat(bill);
-  people = parseFloat(people);
+  bill = parseFloat(bill).toFixed(2);
   console.log(bill, percent, people);
   if ((percent || bill || people) == 0 || (percent || bill || people) == "0") {
     putResult(tipPerson, totalPerson);
