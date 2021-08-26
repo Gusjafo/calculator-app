@@ -28,8 +28,10 @@
         <div class="col" id="columnOne" style="background-color: #ffffff;">
           <div class="col m-4 mb-1">
             <label for="inputBillText" id="billOutput" class="form-label">Bill</label>
+            <div id="peopleOutput"></div>
+            <div id="percentOutput"></div>
             <input type="tel" class="shadow-none form-control text-end fs-4" value="" id="inputBillText"
-            onkeypress="return onlyNumberKeyDot(event)">
+              onkeypress="return onlyNumberKeyDot(event)">
             <img src="images\icon-dollar.svg" role="img" alt="dollar_img" id="logoDolar">
           </div>
           <div class="col mx-4 fs-6">Select Tip %</div>
@@ -39,8 +41,8 @@
             <div class="col mt-3"><button type="button" id="15" class="btn btnPercent w-100">15%</button></div>
             <div class="col mt-3"><button type="button" id="25" class="btn btnPercent w-100">25%</button></div>
             <div class="col mt-3"><button type="button" id="50" class="btn btnPercent w-100">50%</button></div>
-            <div class="col mt-3"><input type="tel" value="" pattern="[0-9]+([.][0-9]+)?" class="form-control fs-5" id="inputCustomField"
-              onclick="resetCustomValue()" onkeypress="return onlyCustomValue(event)" /></div>
+            <div class="col mt-3"><input type="tel" value="" pattern="[0-9]+([.][0-9]+)?" class="form-control fs-5"
+                id="inputCustomField" onclick="resetCustomValue()" onkeypress="return onlyCustomValue(event)" /></div>
           </div>
           <div class="col mb-0 mx-4">
             <div class="row justify-content-between">
@@ -52,17 +54,19 @@
               </div>
             </div>
             <input type="tel" class="form-control text-end fs-4 shadow-none" value="-" id="inputPeopleText"
-             onclick="resetPeopleValue()" onkeypress="return onlyNumberKey(event)" />
+              onclick="resetPeopleValue()" onkeypress="return onlyNumberKey(event)" />
             <img src="images\icon-person.svg" role="img" alt="person_img" id="logoPerson">
           </div>
         </div>
-      
+
         <div class="col px-2" id="columnTwo" style="background-color: #ffffff;">
           <div class="col my-3 pt-4" style="background-color: #00494d; border-radius: 20px;">
             <div class="row row-cols-2 align-items-center py-0 px-4 gy-2">
-              <div class="col h-100 fs-6" style="color: white;"><b>Tip Amount</b><br><span class="personClass">/ person</span></div>
+              <div class="col h-100 fs-6" style="color: white;"><b>Tip Amount</b><br><span class="personClass">/
+                  person</span></div>
               <div class="col h-100 text-end textSize fs-1" id="tipPerPerson">0.00</div>
-              <div class="col h-100 fs-6" style="color: white;"><b>Total</b><br><span class="personClass">/ person</span></div>
+              <div class="col h-100 fs-6" style="color: white;"><b>Total</b><br><span class="personClass">/
+                  person</span></div>
               <div class="col h-100 text-end textSize fs-1" id="tipTotal">0.00</div>
             </div>
             <div id="spaceWhite"><br></div>
@@ -74,8 +78,7 @@
         </div>
       </div>
     </div>
-    <div id="peopleOutput"></div>
-    <div id="percentOutput"></div>
+
 
     <div class="attribution text-center mt-5 mb-2 px-5">
       Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.

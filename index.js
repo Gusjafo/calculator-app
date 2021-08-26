@@ -75,6 +75,9 @@ function resetCustomValue() {
 function onlyNumberKeyDot(evt) {
   document.getElementById("billOutput").innerHTML = "bill: " + bill;
   var ASCIICode = (evt.which) ? evt.which : evt.keyCode;
+  
+  document.getElementById("peopleOutput").innerHTML = "ASCIIcode: " + ASCIICode;
+
   if (((ASCIICode >= 46 && ASCIICode <= 57) && (ASCIICode != 47))){
     let inputBillPut = document.querySelector("#inputBillText").value;
     console.log(inputBillPut);
@@ -140,9 +143,7 @@ function outBorder() {
 function calculeValues() {
   let tipPerson = 0;
   let totalPerson = 0;
-  bill = parseFloat(bill).toFixed(2);
-  document.getElementById("peopleOutput").innerHTML = "bill in calculeValue: " + bill;
-  
+  bill = parseFloat(bill).toFixed(2);  
   document.getElementById("percentOutput").innerHTML = "percent: " + percent + " people: " + people;
   console.log(bill, percent, people);
   if ((percent || bill || people) == 0 || (percent || bill || people) == "0") {
