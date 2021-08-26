@@ -139,6 +139,7 @@ function calculeValues() {
   let totalPerson = 0;
   bill = parseFloat(bill).toFixed(2);
   console.log(bill, percent, people);
+  document.getElementById("billOutput").innerHTML = "bill: " + bill;
   if ((percent || bill || people) == 0 || (percent || bill || people) == "0") {
     putResult(tipPerson, totalPerson);
     return false;
