@@ -75,29 +75,38 @@ function resetCustomValue() {
 function onlyNumberKeyDot(evt) {
   document.getElementById("billOutput").innerHTML = "bill: " + bill;
   var ASCIICode = (evt.which) ? evt.which : evt.keyCode;
-  
-  document.getElementById("peopleOutput").innerHTML = "ASCIIcode: " + ASCIICode;
+  if (ASCIICode == 0 || ASCIICode == 229) { //for android chrome keycode fix
+    ASCIICode = getKeyCode(this.value);
+    var getKeyCode = function (str) {
+      return str.charCodeAt(str.length - 1);
+    }
+  };
 
-  if (((ASCIICode >= 46 && ASCIICode <= 57) && (ASCIICode != 47))){
+var dron = document.querySelector("#inputBillText").value;
+var DROIDCode = dron.charCodeAt(dron.length - 1);
+
+document.getElementById("peopleOutput").innerHTML = "ASCIIcode: " + ASCIICode + " DROIDCode: " + DROIDCode;
+
+if (((ASCIICode >= 46 && ASCIICode <= 57) && (ASCIICode != 47))) {
+  let inputBillPut = document.querySelector("#inputBillText").value;
+  console.log(inputBillPut);
+  let keyPush = evt.key;
+  console.log(evt.key);
+  bill = bill + keyPush;
+  document.querySelector("#inputBillText").value = inputBillPut;
+  return true;
+} else
+  if (((ASCIICode < 46 || ASCIICode > 57) || (ASCIICode == 47))) {
     let inputBillPut = document.querySelector("#inputBillText").value;
-    console.log(inputBillPut);
-    let keyPush = evt.key;
-    console.log(evt.key);
-    bill = bill + keyPush;
-    document.querySelector("#inputBillText").value = inputBillPut;   
-    return true;
-  } else
-  if (((ASCIICode < 46 || ASCIICode > 57) || (ASCIICode == 47))) {   
-    let inputBillPut = document.querySelector("#inputBillText").value;       
     bill = bill + ".";
     console.log(bill);
-    document.querySelector("#inputBillText").value = inputBillPut + "."; 
+    document.querySelector("#inputBillText").value = inputBillPut + ".";
     return false;
   } else return false;
 }
 
 function onlyNumberKey(evt) {
-  var ASCIICode = (evt.which) ? evt.which : evt.keyCode;  
+  var ASCIICode = (evt.which) ? evt.which : evt.keyCode;
   if (ASCIICode >= 48 && ASCIICode <= 57) {
     let inputPeoplePut = document.querySelector("#inputPeopleText").value;
     people = people + evt.key;
@@ -105,11 +114,11 @@ function onlyNumberKey(evt) {
     fieldPeople.value = inputPeoplePut;
     fieldPeople.addEventListener("input", calculeValues);
     let numberCero = document.getElementById("invalid-feedback");
-    numberCero.style.display = "none"; 
+    numberCero.style.display = "none";
 
     if (inputPeoplePut == 0 && ASCIICode == 48) {
       numberCero.style.display = "block";
-      fieldPeople.style.border = "0.2rem red solid";      
+      fieldPeople.style.border = "0.2rem red solid";
     }
     return true;
   } else {
@@ -143,7 +152,7 @@ function outBorder() {
 function calculeValues() {
   let tipPerson = 0;
   let totalPerson = 0;
-  bill = parseFloat(bill).toFixed(2);  
+  bill = parseFloat(bill).toFixed(2);
   document.getElementById("percentOutput").innerHTML = "percent: " + percent + " people: " + people;
   console.log(bill, percent, people);
   if ((percent || bill || people) == 0 || (percent || bill || people) == "0") {
