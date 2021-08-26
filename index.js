@@ -78,9 +78,7 @@ function resetCustomValue() {
   return;
 }
 
-function onlyNumberKeyDot(evt) {
-  document.getElementById("billOutput").innerHTML = "bill: " + bill;
- 
+function onlyNumberKeyDot(evt) { 
 if (evt >= 0 && evt <= 9) {
   let inputBillPut = document.querySelector("#inputBillText").value;
   console.log(inputBillPut);
@@ -147,7 +145,6 @@ function calculeValues() {
   let tipPerson = 0;
   let totalPerson = 0;
   bill = parseFloat(bill).toFixed(2);
-  document.getElementById("percentOutput").innerHTML = "percent: " + percent + " people: " + people;
   console.log(bill, percent, people);
   if ((percent || bill || people) == 0 || (percent || bill || people) == "0") {
     putResult(tipPerson, totalPerson);
