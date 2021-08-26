@@ -3,10 +3,6 @@ let bill = 0;
 let people = 0;
 let percent = 0;
 
-
-
-
-
 function startup() {
   let arrayBtn = document.getElementsByClassName("btnPercent");
 
@@ -16,16 +12,27 @@ function startup() {
   setCalculateValues(arrayBtn);
 
   bilListener = document.getElementById("inputBillText");
-
   bilListener.addEventListener("click", resetBillValue);
-
-  bilListener.addEventListener("keydown", function(event) {
+  bilListener.addEventListener("keydown", function (event) {
     onlyNumberKeyDot(event.key);
-  }, true);
+  }, true);  
+  
+  function match() {
+    let paddingBox = document.getElementsByClassName('container')[0].classList;
+    let spaceWhite = document.getElementById("spaceWhite").classList;
+    if (minWidth769.matches) {
+      paddingBox.add('px-5');
+      spaceWhite.add('m-5');
+    } else {
+      paddingBox.remove('px-5');
+      spaceWhite.remove('m-5');
+    }
+  };
+  let minWidth769 = window.matchMedia("(min-width: 769px)");
+  minWidth769.addEventListener('change', match);
+  match();
 
   document.addEventListener("mousemove", outBorder);
-  // document.addEventListener("keyup", calculeValues);
-  // window.addEventListener("touchend", calculeValuesMobile, false);
   document.getElementById("resetButon").addEventListener("click", resetValues);
 }
 
@@ -78,27 +85,27 @@ function resetCustomValue() {
   return;
 }
 
-function onlyNumberKeyDot(evt) { 
-if (evt >= 0 && evt <= 9) {
-  let inputBillPut = document.querySelector("#inputBillText").value;
-  console.log(inputBillPut);
-  let keyPush = evt;
-  console.log(evt);
-  bill = bill + keyPush;
-  document.querySelector("#inputBillText").value = inputBillPut;
-  return false;
-} else
-  if ( evt == "Unidentified" || evt == ".") {
-    // let inputBillPut = document.querySelector("#inputBillText").value;
-    bill = bill + ".";
-    console.log(bill);
-    // document.querySelector("#inputBillText").value = inputBillPut + ".";
+function onlyNumberKeyDot(evt) {
+  if (evt >= 0 && evt <= 9) {
+    let inputBillPut = document.querySelector("#inputBillText").value;
+    console.log(inputBillPut);
+    let keyPush = evt;
+    console.log(evt);
+    bill = bill + keyPush;
+    document.querySelector("#inputBillText").value = inputBillPut;
     return false;
-  } else return false;
+  } else
+    if (evt == "Unidentified" || evt == ".") {
+      // let inputBillPut = document.querySelector("#inputBillText").value;
+      bill = bill + ".";
+      console.log(bill);
+      // document.querySelector("#inputBillText").value = inputBillPut + ".";
+      return false;
+    } else return false;
 }
 
 function onlyNumberKey(evt) {
-  var ASCIICode = (evt.which) ? evt.which : evt.keyCode;
+  let ASCIICode = (evt.which) ? evt.which : evt.keyCode;
   if (ASCIICode >= 48 && ASCIICode <= 57) {
     let inputPeoplePut = document.querySelector("#inputPeopleText").value;
     people = people + evt.key;
@@ -119,7 +126,7 @@ function onlyNumberKey(evt) {
 }
 
 function onlyCustomValue(evt) {
-  var ASCIICode = (evt.which) ? evt.which : evt.keyCode;
+  let ASCIICode = (evt.which) ? evt.which : evt.keyCode;
   if ((ASCIICode >= 46 && ASCIICode <= 57) && (ASCIICode != 47)) {
     let inCustomPercent = document.querySelector("#inputCustomField").value;
     percent = percent + evt.key;
@@ -145,7 +152,6 @@ function calculeValues() {
   let tipPerson = 0;
   let totalPerson = 0;
   bill = parseFloat(bill).toFixed(2);
-  console.log(bill, percent, people);
   if ((percent || bill || people) == 0 || (percent || bill || people) == "0") {
     putResult(tipPerson, totalPerson);
     return;
@@ -208,18 +214,6 @@ function setCalculateValues(array) {
 }
 
 
-var responsiveClass = document.getElementsByClassName('container')[0].classList;
 
-var minWidth769 = window.matchMedia("(min-width: 769px)");
 
-function match() {
-  if (minWidth769.matches) {
-    responsiveClass.add('px-5')
-  } else {
-    responsiveClass.remove('px-5');
-  }
-}
 
-minWidth769.addListener(match);
-
-match();
