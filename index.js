@@ -81,12 +81,7 @@ function onlyNumberKeyDot(evt) {
       return str.charCodeAt(str.length - 1);
     }
   };
-
-var dron = document.querySelector("#inputBillText").value;
-var DROIDCode = dron.charCodeAt(dron.length - 1);
-
-document.getElementById("peopleOutput").innerHTML = "ASCIIcode: " + ASCIICode + " DROIDCode: " + DROIDCode;
-
+document.getElementById("peopleOutput").innerHTML = "ASCIIcode: " + ASCIICode;
 if (((ASCIICode >= 46 && ASCIICode <= 57) && (ASCIICode != 47))) {
   let inputBillPut = document.querySelector("#inputBillText").value;
   console.log(inputBillPut);
