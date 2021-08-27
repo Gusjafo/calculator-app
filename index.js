@@ -33,7 +33,11 @@ function startup() {
   match();
 
   document.addEventListener("mousemove", outBorder);
-  document.getElementById("resetButon").addEventListener("click", resetValues);
+  btnResetEvt = document.getElementById("resetButon");
+  btnResetEvt.addEventListener("mousedown", function(){
+    this.style.backgroundColor = "#c5e4e7";
+  });
+  btnResetEvt.addEventListener("mouseup", resetValues);
 }
 
 
@@ -51,10 +55,6 @@ function cleanBorder(array) {
   for (let index = 0; index < array.length; index++) {
     array[index].classList.add("shadow-none");
   }
-  // Another way to do the same
-  // Array.prototype.forEach.call(arrayBtn,function(element) {
-  //   element.classList.add("shadow-none");
-  // });
   return;
 }
 
@@ -135,13 +135,20 @@ function onlyCustomValue(evt) {
 
 function outBorder() {
   let billFormField = document.querySelector("#inputBillText");
-  billFormField.style.border = "none";
+  billFormField.style.border = "none";  
   let customFormField = document.querySelector("#inputCustomField");
-  customFormField.style.border = "none"
+  customFormField.style.border = "none";
+  let peopleFormField = document.querySelector("#inputPeopleText");
+  if(peopleFormField.value == 0) {
+    return;
+  } else peopleFormField.style.border = "none";
   return;
 }
 
 function calculeValues() {
+  let btnReset = document.getElementById("resetButon");
+  btnReset.style.backgroundColor = "#26c0ab";   
+  btnReset.style.color = "#00494d";
   let tipPerson = 0;
   let totalPerson = 0;
   bill = parseFloat(bill).toFixed(2);
@@ -177,6 +184,9 @@ function putResult(tipPerson, totalPerson) {
 }
 
 function resetValues() {
+  let btnReset =  document.getElementById("resetButon");
+  btnReset.style.backgroundColor = "#5e7a7d";
+  btnReset.style.color = "#5e7a7d";
   bill, people = 0;
   percent = 0;
   resetBillValue();
