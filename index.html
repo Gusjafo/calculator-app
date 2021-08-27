@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<head role="banner">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- displays site properly based on user's device -->
@@ -16,69 +16,80 @@
   <title>Frontend Mentor | Tip calculator app</title>
 </head>
 
-<body>
+<body role="main">
 
-  <div class="container p-0">
+  <header>
     <div class="text-center my-5">
       <img src="images/logo.svg" alt="logo_img">
     </div>
-    <div id="contenedor m-0 p-0" style="background-color: #ffffff; border-radius: 20px;">
-      <div class="row row-cols-1 mx-4 row-cols-md-2 align-items-center g-0">
-        <div class="col" id="columnOne" style="background-color: #ffffff;">
-          <div class="col m-4 mb-1">
-            <label for="inputBillText" id="billOutput" class="form-label">Bill</label>
-            <input type="tel" class="shadow-none form-control text-end fs-4" value="" id="inputBillText">
-            <img src="images/icon-dollar.svg" role="img" alt="dollar_img" id="logoDolar">
-          </div>
-          <div class="col mx-4 fs-6">Select Tip %</div>
-          <div class="row row-cols-2 row-cols-md-3 pt-2 pb-4 mx-3 g-3 g-lg-3 botones">
-            <div class="col mt-3"><button type="button" id="5" class="btn btnPercent btn-lg w-100">5%</button></div>
-            <div class="col mt-3"><button type="button" id="10" class="btn btnPercent btn-lg w-100">10%</button></div>
-            <div class="col mt-3"><button type="button" id="15" class="btn btnPercent btn-lg w-100">15%</button></div>
-            <div class="col mt-3"><button type="button" id="25" class="btn btnPercent btn-lg w-100">25%</button></div>
-            <div class="col mt-3"><button type="button" id="50" class="btn btnPercent btn-lg w-100">50%</button></div>
-            <div class="col mt-3"><input type="tel" value="" class="form-control h-100 fs-5" id="inputCustomField" 
-              onclick="resetCustomValue()" onkeypress="return onlyCustomValue(event)" /></div>
-          </div>
-          <div class="col mb-0 mx-4">
-            <div class="row justify-content-between">
-              <div class="col-6">
-                <label class="form-label fs-6">Number of People</label>
-              </div>
-              <div class="col-6 fs-6 text-end" id="invalid-feedback">
-                Can't be zero.
-              </div>
-            </div>
-            <input type="tel" class="form-control text-end fs-4 shadow-none" value="-" id="inputPeopleText"
-              onclick="resetPeopleValue()" onkeypress="return onlyNumberKey(event)" />
-            <img src="images/icon-person.svg" role="img" alt="person_img" id="logoPerson">
-          </div>
-        </div>
+  </header>
 
-        <div class="col px-2" id="columnTwo" style="background-color: #ffffff;">
-          <div class="col my-3 pt-4" style="background-color: #00494d; border-radius: 20px;">
-            <div class="row row-cols-2 align-items-center py-0 px-4 mt-2 gy-2">
-              <div class="col h-100 fs-6" style="color: white;"><b>Tip Amount</b><br><span class="personClass fw-light">/
-                  person</span></div>
-              <div class="col h-100 text-end textSize fs-1 fw-bold" id="tipPerPerson">0.00</div>
-              <div class="col h-100" style="color: white;"><b>Total</b><br><span class="personClass fw-light">/
-                  person</span></div>
-              <div class="col h-100 text-end textSize fs-1 fw-bold" id="tipTotal">0.00</div>
+  <div class="container p-0">
+
+    <main>
+      <div role="contentinfo" class="m-0 p-0" style="background-color: #ffffff; border-radius: 20px;">
+        <div class="row row-cols-1 mx-4 row-cols-md-2 align-items-center g-0">
+          <div class="col" id="columnOne" style="background-color: #ffffff;">
+            <div class="col m-4 mb-1">
+              <label for="inputBillText" id="billOutput" class="form-label">Bill</label>
+              <input type="tel" class="shadow-none form-control text-end fs-4" value="" id="inputBillText">
+              <img src="images/icon-dollar.svg" alt="dollar_img" id="logoDolar">
             </div>
-            <div id="spaceWhite" class=""><br></div>
-            <div class="col h-100 p-4">
-              <button type="button" id="resetButon" class="btn w-100 fs-4 shadow-none"
-                style="background-color: #5e7a7d; color: #5e7a7d">Reset</button>
+            <div class="col mx-4 fs-6">Select Tip %</div>
+            <div class="row row-cols-2 row-cols-md-3 pt-2 pb-4 mx-3 g-3 g-lg-3 botones">
+              <div class="col mt-3"><button type="button" id="5" class="btn btnPercent btn-lg w-100">5%</button></div>
+              <div class="col mt-3"><button type="button" id="10" class="btn btnPercent btn-lg w-100">10%</button></div>
+              <div class="col mt-3"><button type="button" id="15" class="btn btnPercent btn-lg w-100">15%</button></div>
+              <div class="col mt-3"><button type="button" id="25" class="btn btnPercent btn-lg w-100">25%</button></div>
+              <div class="col mt-3"><button type="button" id="50" class="btn btnPercent btn-lg w-100">50%</button></div>
+              <div class="col mt-3">
+                <input type="tel" value="" class="form-control h-100 fs-5" id="inputCustomField"
+                  aria-label="custom-input" onclick="resetCustomValue()" onkeypress="return onlyCustomValue(event)" />
+              </div>
+            </div>
+            <div class="col mb-0 mx-4">
+              <div class="row justify-content-between">
+                <div class="col-6">
+                  <label class="form-label fs-6">Number of People</label>
+                </div>
+                <div class="col-6 fs-6 text-end" id="invalid-feedback">
+                  Can't be zero.
+                </div>
+              </div>
+              <input type="tel" class="form-control text-end fs-4 shadow-none" value="-" id="inputPeopleText"
+                aria-label="people-input" onclick="resetPeopleValue()" onkeypress="return onlyNumberKey(event)" />
+              <img src="images/icon-person.svg" alt="person_img" id="logoPerson">
+            </div>
+          </div>
+
+          <div class="col px-2" id="columnTwo" style="background-color: #ffffff;">
+            <div class="col my-3 pt-4" style="background-color: #00494d; border-radius: 20px;">
+              <div class="row row-cols-2 align-items-center py-0 px-4 mt-2 gy-2">
+                <div class="col h-100 fs-6" style="color: white;"><b>Tip Amount</b><br><span
+                    class="personClass fw-light">/
+                    person</span></div>
+                <div class="col h-100 text-end textSize fs-1 fw-bold" id="tipPerPerson">0.00</div>
+                <div class="col h-100" style="color: white;"><b>Total</b><br><span class="personClass fw-light">/
+                    person</span></div>
+                <div class="col h-100 text-end textSize fs-1 fw-bold" id="tipTotal">0.00</div>
+              </div>
+              <div id="spaceWhite" class=""><br></div>
+              <div class="col h-100 p-4">
+                <button type="button" id="resetButon" class="btn w-100 fs-4 shadow-none"
+                  style="background-color: #003333; color: #003333">Reset</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    
-    <div class="attribution text-center mt-5 mb-2 px-5">
-      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-      Coded by <a href="https://github.com/Gusjafo" target="_blank">GJF</a>.
-    </div>
+    </main>
+
+    <footer>
+      <div class="attribution text-center mt-5 mb-2 px-5">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+        Coded by <a href="https://github.com/Gusjafo" target="_blank">GJF</a>.
+      </div>
+    </footer>
   </div>
 
   <script src="index.js"></script>

@@ -185,8 +185,8 @@ function putResult(tipPerson, totalPerson) {
 
 function resetValues() {
   let btnReset =  document.getElementById("resetButon");
-  btnReset.style.backgroundColor = "#5e7a7d";
-  btnReset.style.color = "#5e7a7d";
+  btnReset.style.backgroundColor = "#003333";
+  btnReset.style.color = "#003333";
   bill, people = 0;
   percent = 0;
   resetBillValue();
