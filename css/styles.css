@@ -3,6 +3,7 @@ body {
     box-sizing: border-box;
     background-color: #c5e4e7;
     font-family: 'Space Mono', monospace;
+    /* padding: 0 15% 0 15%; */
 }
 
 .form-control {

@@ -20,12 +20,17 @@ function startup() {
   function match() {
     let paddingBox = document.getElementsByClassName('container')[0].classList;
     let spaceWhite = document.getElementById("spaceWhite").classList;
+    let bodyPadding = document.getElementsByTagName("body")[0];
     if (minWidth769.matches) {
       paddingBox.add('px-5');
-      spaceWhite.add('m-5');
+      spaceWhite.add('m-4');
+      spaceWhite.add('mb-5');
+      bodyPadding.style.padding = "0 10%";
     } else {
       paddingBox.remove('px-5');
-      spaceWhite.remove('m-5');
+      spaceWhite.remove('m-4');
+      spaceWhite.remove('mb-5');
+      bodyPadding.style.padding = "0";
     }
   };
   let minWidth769 = window.matchMedia("(min-width: 769px)");
@@ -185,7 +190,7 @@ function putResult(tipPerson, totalPerson) {
 
 function resetValues() {
   let btnReset =  document.getElementById("resetButon");
-  btnReset.style.backgroundColor = "#003333";
+  btnReset.style.backgroundColor = "#034444";
   btnReset.style.color = "#003333";
   bill, people = 0;
   percent = 0;
