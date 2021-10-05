@@ -41,6 +41,8 @@ I had two great difficulties to carry out this project.
 
 * The second and unexpected difficulty was entering the point in the mobile device. The solution that I implemented was to set as a point any value that is different from a number.
 
+
+```
 function onlyNumberKeyDot(evt) {
   if (evt >= 0 && evt <= 9) {
     let inputBillPut = document.querySelector("#inputBillText").value;
@@ -56,6 +58,7 @@ function onlyNumberKeyDot(evt) {
       return false;
     } else return false;
 }
+```
 
 This function runs when a value is entered. If it is a "." or "Identified", a "." to the final value is added.
 
